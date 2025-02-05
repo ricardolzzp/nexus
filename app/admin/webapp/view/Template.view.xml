@@ -1,0 +1,185 @@
+<mvc:View
+    controllerName="admin.controller.Template"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    height="100%"
+>
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader id="toolheader1">
+                <Button id="sideNavigationToggleButton" press=".onSideNavButtonPress" icon="sap-icon://menu2" type="Transparent" tooltip="Menu">
+                    <layoutData>
+                        <OverflowToolbarLayoutData id="OverflowToolbarLayoutData29" priority="NeverOverflow"/>
+                    </layoutData>
+                </Button>
+                <Image
+                    id="imageSap"
+                    height="1.5rem"
+                    class="sapUiSmallMarginBegin"
+                    src="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg"
+                />
+                <Title
+                    level="H1"
+                    text="Nova Consulting"
+                    wrapping="false"
+                    id="productName"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData id="OverflowToolbarLayoutData" priority="Disappear" />
+                    </layoutData>
+                </Title>
+                <Text
+                    text=""
+                    wrapping="false"
+                    id="secondTitle"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData id="OverflowToolbarLayoutData2" priority="Disappear" />
+                    </layoutData>
+                </Text>
+                <ToolbarSpacer id="ToolbarSpacr"/>
+                <SearchField
+                    width="16rem"
+                    id="searchField"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="OverflowToolbarLayoutData3"
+                            priority="Low"
+                            group="1"
+                        />
+                    </layoutData>
+                </SearchField>
+                <ToolbarSpacer id="spacer">
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            id="OverflowToolbarLayoutData4"
+                            priority="Low"
+                            group="1"
+                        />
+                    </layoutData>
+                </ToolbarSpacer>
+                <Button
+                    visible="false"
+                    icon="sap-icon://search"
+                    type="Transparent"
+                    id="searchButton"
+                    tooltip="Search"
+                />
+
+                <ToolbarSeparator id="ToolbarSeparator4">
+                    <layoutData>
+                        <OverflowToolbarLayoutData id="OverflowToolbarLayoutData7" group="2" />
+                    </layoutData>
+                </ToolbarSeparator>
+               
+                <tnt:ToolHeaderUtilitySeparator id="toolheadersperator" />
+                <ToolbarSpacer id="toolbarspacer3" width="1.125rem" />
+                <Avatar
+
+                    id="avatar"
+                    displaySize="XS"
+                    tooltip="Profile"
+                    press="onPress"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData id="OverflowToolbarLayoutData9" priority="NeverOverflow" />
+                    </layoutData>
+                </Avatar>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <SideNavigation
+                id="SideNavigation"
+                xmlns="sap.tnt"
+                xmlns:core="sap.ui.core"
+                expanded="true"
+                selectedKey="{ui>/selectedKey}"
+                itemSelect="onSegmentedButtonSelectionChange"
+            >
+                <NavigationList id="NavigationItem">
+                    <NavigationListItem
+                    id="NavigationListItem17"
+                        xmlns="sap.tnt"
+                        text="Inicio"
+                        icon="sap-icon://home"
+                        enabled="{enabled}"
+                        expanded="{expanded}"
+                        items="{path: 'items', templateShareable:true}"
+                        key="RouteHome"
+                    >
+                        <NavigationListItem
+                        id="NavigationListItem16"
+                            text="Inicio"
+                            key="home"
+                            enabled="{enabled}"
+                        />
+                    </NavigationListItem>
+
+                    <NavigationListItem
+                    id="NavigationListItem9"
+                        xmlns="sap.tnt"
+                        text="Clientes"
+                        icon="sap-icon://activity-individual"
+                        expanded="false"
+                        key="businessPartner"
+                    />
+
+                    <NavigationListItem
+                    id="NavigationListItem10"
+                        xmlns="sap.tnt"
+                        text="Produtos"
+                        icon="sap-icon://add-product"
+                        key="RouteTenantUsers"
+                    />
+
+                    <NavigationListItem
+                    id="NavigationListItem8"
+                        xmlns="sap.tnt"
+                        text="Usuários"
+                        icon="sap-icon://user-edit"
+                        key="RouteTenantUsers"
+                    />
+
+                  
+                </NavigationList>
+
+                <fixedItem>
+                    <NavigationList id="navigationList">
+                        <!-- Suporte -->
+                        <NavigationListItem
+                        id="NavigationListItem2"
+                            xmlns="sap.tnt"
+                            text="Suporte"
+                            icon="sap-icon://hint"
+                            key="support"
+                        />
+
+                        <!-- Sair -->
+                        <NavigationListItem
+                            id="NavigationListItem"
+                            xmlns="sap.tnt"
+                            text="Sair"
+                            icon="sap-icon://log"
+                            key="logout"
+                        />
+                    </NavigationList>
+                </fixedItem>
+            </SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <NavContainer
+                id="parentNavContainer"
+                height="100%"
+                busy="{appView>/busy}"
+                busyIndicatorDelay="{appView>/delay}"
+            >
+                <pages />
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
