@@ -113,7 +113,7 @@
                         key="RouteHome"
                     >
                         <NavigationListItem
-                        id="NavigationListItem16"
+                        id="NavigationHomeRoute"
                             text="Inicio"
                             key="home"
                             enabled="{enabled}"
@@ -121,28 +121,28 @@
                     </NavigationListItem>
 
                     <NavigationListItem
-                    id="NavigationListItem9"
+                    id="NavigationClienteRoute"
                         xmlns="sap.tnt"
                         text="Clientes"
                         icon="sap-icon://activity-individual"
                         expanded="false"
-                        key="businessPartner"
+                        key="RouteClientes"
                     />
 
                     <NavigationListItem
-                    id="NavigationListItem10"
+                    id="NavigationProdutoRoute"
                         xmlns="sap.tnt"
                         text="Produtos"
                         icon="sap-icon://add-product"
-                        key="RouteTenantUsers"
+                        key="RouteProdutos"
                     />
 
                     <NavigationListItem
-                    id="NavigationListItem8"
+                    id="NavigationUserRoute"
                         xmlns="sap.tnt"
                         text="Usuários"
                         icon="sap-icon://user-edit"
-                        key="RouteTenantUsers"
+                        key="RouteUsers"
                     />
 
                   

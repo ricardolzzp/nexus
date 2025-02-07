@@ -98,13 +98,48 @@
         },
         {
 					"pattern": "users",
-					"name": "RouteTenantUsers",
-					"target": "TargetTenantUsers"
+					"name": "RouteUsers",
+					"target": "TargetUsers"
 				},
         {
 					"pattern": "create/users",
-					"name": "RouteTenantUsersCreate",
-					"target": "TargetTenantUsersCreate"
+					"name": "RouteUsersCreate",
+					"target": "TargetUsersCreate"
+				},
+        {
+					"pattern": "view/users/{id}",
+					"name": "RouteUsersDetail",
+					"target": "TargetUsersDetail"
+				},
+        {
+					"pattern": "produtos",
+					"name": "RouteProdutos",
+					"target": "TargetProdutos"
+				},
+        {
+					"pattern": "create/produtos",
+					"name": "RouteProdutosCreate",
+					"target": "TargetProdutosCreate"
+				},
+        {
+					"pattern": "view/produtos/{id}",
+					"name": "RouteProdutosDetail",
+					"target": "TargetProdutosDetail"
+				},
+        {
+					"pattern": "clientes",
+					"name": "RouteClientes",
+					"target": "TargetClientes"
+				},
+        {
+					"pattern": "create/clientes",
+					"name": "RouteClientesCreate",
+					"target": "TargetClientesCreate"
+				},
+        {
+					"pattern": "view/clientes/{id}",
+					"name": "RouteClientesDetail",
+					"target": "TargetClientesDetail"
 				}
       ],
       "targets": {
@@ -122,19 +157,82 @@
 					"controlId": "parentNavContainer",
 					"level": 2
         },
-        "TargetTenantUsers": {
-          "id": "TenantUsersIndex",
-					"path": "admin.view.TenantUsers",
+        "TargetUsers": {
+          "id": "UsersIndex",
+					"path": "admin.view.Users",
 					"name": "Index",
 					"transition": "slide",
 					"parent": "TargetTemplate",
 					"controlId": "parentNavContainer",
 					"level": 2
         },
-        "TargetTenantUsersCreate": {
-          "id": "TenantUsersCreate",
-					"path": "admin.view.TenantUsers",
+        "TargetUsersCreate": {
+          "id": "UsersCreate",
+					"path": "admin.view.Users",
 					"name": "Create",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetUsersDetail": {
+          "id": "UsersDetail",
+					"path": "admin.view.Users",
+					"name": "Detail",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetProdutos": {
+          "id": "ProdutosIndex",
+					"path": "admin.view.Produtos",
+					"name": "Index",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetProdutosCreate": {
+          "id": "ProdutosCreate",
+					"path": "admin.view.Produtos",
+					"name": "Create",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetProdutosDetail": {
+          "id": "ProdutosDetail",
+					"path": "admin.view.Produtos",
+					"name": "Detail",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetClientes": {
+          "id": "ClientesIndex",
+					"path": "admin.view.Clientes",
+					"name": "Index",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetClientesCreate": {
+          "id": "ClientesCreate",
+					"path": "admin.view.Clientes",
+					"name": "Create",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetClientesDetail": {
+          "id": "ClientesDetail",
+					"path": "admin.view.Clientes",
+					"name": "Detail",
 					"transition": "slide",
 					"parent": "TargetTemplate",
 					"controlId": "parentNavContainer",

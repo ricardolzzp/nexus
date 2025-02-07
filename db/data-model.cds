@@ -16,10 +16,14 @@ entity User: cuid, managed {
     name            : String @title: 'Nome' @Validator: {format: 'string'} @mandatory;
     email           : String @title: 'E-mail' @Validator: {format: 'email'} @mandatory;
     password        : String @title: 'Senha' @Validator: {format: 'string'} @mandatory;
+    telefone        : String @title: 'Telefone' @mandatory;
+    avatar          : String default '';
+    isActive        : Boolean @title: 'Ativo' default true;
 }
 
 entity Product: cuid, managed {
     name: String @title: 'Nome' @Validator: {format: 'string'} @mandatory;
+    isActive        : Boolean @title: 'Ativo' default true;
 }
 
 entity Tenant: cuid, managed {
@@ -31,6 +35,7 @@ entity Tenant: cuid, managed {
     status          : TenantStatusType @title: 'Status';
     users           : Association to many TenantUsers on users.tenant = $self;
     products        : Association to many TenantProduct on products.tenant = $self;
+    nexDistDfe      : Association to many nexDistDfe on nexDistDfe.tenant = $self;
 }
 
 entity TenantProduct: cuid, managed {
@@ -55,4 +60,10 @@ entity TenantUsers: cuid, managed {
         password    : String        @title: 'Senha' @mandatory @UI.Hidden;
         avatar      : String;
         tenant      : Association to Tenant; 
-};
+}
+
+entity nexDistDfe: cuid, managed {
+    file: String;
+    status: String;
+    tenant: Association to Tenant;
+}

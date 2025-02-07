@@ -1,11 +1,10 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "admin/model/models",
-    "sap/ui/core/routing/History",
-], (UIComponent, models, History) => {
+    "nexus/model/models"
+], (UIComponent, models) => {
     "use strict";
 
-    return UIComponent.extend("admin.Component", {
+    return UIComponent.extend("nexus.Component", {
         metadata: {
             manifest: "json",
             interfaces: [
@@ -22,19 +21,6 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
-        },
-
-        myNavBack: function () {
-			var oHistory = History.getInstance();
-			var oPrevHash = oHistory.getPreviousHash();
-			if (oPrevHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				this.getRouter().navTo("RouteHome", {}, true);
-			}
-		},
-
-    
-
+        }
     });
 });

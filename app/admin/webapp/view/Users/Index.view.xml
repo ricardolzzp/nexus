@@ -1,0 +1,55 @@
+<mvc:View
+    controllerName="admin.controller.Users.Index"
+    xmlns="sap.m"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:mvc="sap.ui.core.mvc">
+
+    <Page id="UsersPage" showHeader="true" title="{i18n>manageUsers}">
+
+    	<headerContent>
+			<Button id="UserListPageButton" press="_onCreatePress" icon="sap-icon://add" text="{i18n>addUsers}" />
+		</headerContent>
+
+        <VBox id="UserVbox" fitContainer="true">
+
+            <smartFilterBar:SmartFilterBar id="UserSmartFilterBar" entitySet="Users" parseError="SmartFilter_Explored"
+                basicSearchFieldName="name" enableBasicSearch="true">
+
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration id="UserControlConfigurationName" key="name" visibleInAdvancedArea="true"/>
+                    <smartFilterBar:ControlConfiguration id="UserControlConfigurationEmail" key="email" visibleInAdvancedArea="true"/>
+                    <smartFilterBar:ControlConfiguration id="UserControlConfigurationIsActive" key="isActive" visibleInAdvancedArea="true"/>
+                </smartFilterBar:controlConfiguration>
+
+                <smartFilterBar:layoutData>
+                    <FlexItemData id="flexItemDataUser" shrinkFactor="0" />
+                </smartFilterBar:layoutData>
+
+            </smartFilterBar:SmartFilterBar>
+
+            <smartTable:SmartTable id="UserLineItemsSmartTable" entitySet="Users" smartFilterId="UserSmartFilterBar"
+                tableType="ResponsiveTable" initiallyVisibleFields="name,email,telefone,isActive" useVariantManagement="false"
+                useTablePersonalisation="true" header="{i18n>usersList}" showRowCount="true"
+                ignoredFields="password" ignoreFromPersonalisation="password"
+                persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" class="sapUiResponsiveContentPadding"
+                editTogglable="false" enableExport='false' enableCopy="false" app:useSmartToggle="true">
+
+                <smartTable:layoutData>
+                    <FlexItemData id="UserFlexItemData" growFactor="1" baseSize="0%"/>
+                </smartTable:layoutData>
+
+                <Table id="UserTableBusinessPartner">
+                    <items>
+                        <ColumnListItem id="ColumnListItemUser" type="Navigation" press="_onItemPress">
+                            <cells />
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable>
+        </VBox>
+    
+    </Page>
+</mvc:View>

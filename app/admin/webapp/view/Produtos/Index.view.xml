@@ -1,0 +1,54 @@
+<mvc:View
+    controllerName="admin.controller.Produtos.Index"
+    xmlns="sap.m"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:mvc="sap.ui.core.mvc">
+
+    <Page id="ProdutosPage" showHeader="true" title="{i18n>manageProdutos}">
+
+    	<headerContent>
+			<Button id="ProdutosListPageButton" press="_onCreatePress" icon="sap-icon://add" text="{i18n>addProdutos}" />
+		</headerContent>
+
+        <VBox id="ProdutosVbox" fitContainer="true">
+
+            <smartFilterBar:SmartFilterBar id="ProdutosSmartFilterBar" entitySet="Products" parseError="SmartFilter_Explored"
+                basicSearchFieldName="name" enableBasicSearch="true">
+
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration id="ProdutosControlConfigurationName" key="name" visibleInAdvancedArea="true"/>
+                    <smartFilterBar:ControlConfiguration id="ProdutosControlConfigurationIsActive" key="isActive" visibleInAdvancedArea="true"/>
+                </smartFilterBar:controlConfiguration>
+
+                <smartFilterBar:layoutData>
+                    <FlexItemData id="flexItemDataProdutos" shrinkFactor="0" />
+                </smartFilterBar:layoutData>
+
+            </smartFilterBar:SmartFilterBar>
+
+            <smartTable:SmartTable id="ProdutosLineItemsSmartTable" entitySet="Products" smartFilterId="UserSmartFilterBar"
+                tableType="ResponsiveTable" initiallyVisibleFields="name,isActive" useVariantManagement="false"
+                useTablePersonalisation="true" header="{i18n>usersList}" showRowCount="true"
+                ignoredFields="password" ignoreFromPersonalisation="password"
+                persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" class="sapUiResponsiveContentPadding"
+                editTogglable="false" enableExport='false' enableCopy="false" app:useSmartToggle="true">
+
+                <smartTable:layoutData>
+                    <FlexItemData id="ProdutosFlexItemData" growFactor="1" baseSize="0%"/>
+                </smartTable:layoutData>
+
+                <Table id="ProdutosTableBusinessPartner">
+                    <items>
+                        <ColumnListItem id="ColumnListItemProdutos" type="Navigation" press="_onItemPress">
+                            <cells />
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable>
+        </VBox>
+    
+    </Page>
+</mvc:View>

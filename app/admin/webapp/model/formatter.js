@@ -19,6 +19,17 @@ sap.ui.define([
 				sImagePath += "_small";
 			}
 			return sImagePath + ".jpg";
+		},
+
+		formatDate: function(sDate) {
+			if (!sDate) return "";
+			
+			var oDate = new Date(sDate);
+			var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({
+				style: "long"
+			});
+		
+			return oDateFormat.format(oDate);
 		}
 	};
 });

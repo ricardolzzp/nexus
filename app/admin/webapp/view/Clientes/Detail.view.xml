@@ -1,0 +1,109 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+
+	controllerName="admin.controller.Clientes.Detail"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	height="100%">
+    <m:Page
+		id="AdminPageClientesDetail"
+		showHeader="{device>/system/phone}"
+		showNavButton="{device>/system/phone}"
+		navButtonPress=".onNavButtonPress">
+
+			<ObjectPageLayout id="AdminObjectPageLayoutClientesDetail"
+				showTitleInHeaderContent="true"
+				upperCaseAnchorBar="false">
+				<headerTitle>
+					<ObjectPageDynamicHeaderTitle>
+						<expandedHeading>
+							<m:Title text="{i18n>ClientesDetail}" wrapping="true" />
+						</expandedHeading>
+
+						<snappedHeading>
+							<m:HBox>
+								<m:VBox>
+									<m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiSmallMarginEnd" />
+								</m:VBox>
+							</m:HBox>
+							<m:VBox>
+								<m:Title text="{modelData>/name}" wrapping="true"/>
+							</m:VBox>
+						</snappedHeading>
+
+						<actions>
+							<m:Button id="AdminEditButtonClientesDetail" press="onHandleEditPress" text="{i18n>edit}" type="Emphasized"/>
+							<m:Button id="AdminSaveButtonClientesDetail" visible="false" press="onHandleSavePressed" text="{i18n>save}" type="Emphasized"/>
+							<m:Button id="AdminDeleteButtonClientesDetail"  visible="false" text="{i18n>delete}"/>
+						</actions>
+					</ObjectPageDynamicHeaderTitle>
+				</headerTitle>
+
+				<headerContent>
+
+					<m:HeaderContainer id="headerContainer" scrollStep="200" showDividers="false">
+						<m:HBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+							<m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiMediumMarginEnd" displaySize="L"/>
+							<m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+								<m:HBox class="sapUiTinyMarginBottom">
+									<core:Icon src="sap-icon://account"/>
+									<m:Text text="{modelData>/name}" class="sapUiSmallMarginBegin"/>
+								</m:HBox>
+
+								<m:HBox class="sapUiTinyMarginBottom">
+									<core:Icon src="sap-icon://outgoing-call"/>
+									<m:Text text="{modelData>/telefone}" class="sapUiSmallMarginBegin"/>
+								</m:HBox>
+
+								<m:HBox>
+									<core:Icon src="sap-icon://email"/>
+									<m:Text text="{modelData>/email}" class="sapUiSmallMarginBegin"/>
+								</m:HBox>
+							</m:VBox>
+						</m:HBox>
+
+						<m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+							<m:HBox class="sapUiTinyMarginBottom">
+								<m:Label text="Created By:" class="sapUiSmallMarginEnd"/>
+								<m:Text text="{modelData>/createdBy}"/>
+							</m:HBox>
+
+							<m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
+								<m:Label text="Created On:" class="sapUiSmallMarginEnd"/>
+								<m:Text text="{path: 'modelData>/createdAt', formatter: '.formatter.formatDate'}"/>
+							</m:HBox>
+
+							<m:HBox class="sapUiTinyMarginBottom">
+								<m:Label text="Changed By:" class="sapUiSmallMarginEnd"/>
+								<m:Text text="{modelData>/modifiedBy}"/>
+							</m:HBox>
+
+							<m:HBox renderType="Bare">
+								<m:Label text="Changed On:" class="sapUiSmallMarginEnd"/>
+								<m:Text text="{path: 'modelData>/modifiedAt', formatter: '.formatter.formatDate'}"/>
+							</m:HBox>
+						</m:VBox>
+
+					</m:HeaderContainer>
+
+				</headerContent>
+
+				<sections>
+					
+				</sections>
+			</ObjectPageLayout>
+			<m:footer>
+			<m:OverflowToolbar id="OverflowToolbarClientesDetail">
+            	<m:Button
+					id="ClientesErrorButtonBadgeDetail"
+					icon="sap-icon://error"
+					text="{= ${message>/}.length }"
+					visible="{= ${message>/}.length > 0 }"
+					type="Emphasized"
+					press="onMessagePopoverPress" />
+            
+				<m:ToolbarSpacer id="ToolbarSpacerClientesDetail"/>
+			</m:OverflowToolbar>
+		</m:footer>
+    	</m:Page>
+</mvc:View>
