@@ -17,11 +17,12 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/nexus/",
+        "uri": "/odata/v2/nexus/",
         "type": "OData",
         "settings": {
           "annotations": [],
-          "odataVersion": "4.0"
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
         }
       }
     }
@@ -91,17 +92,68 @@
       },
       "routes": [
         {
-          "name": "RouteIndex",
+          "name": "RouteHome",
           "pattern": ":?query:",
-          "target": [
-            "TargetIndex"
-          ]
-        }
+          "target": "TargetHome"
+        },
+        {
+          "name": "RouteNotFound",
+          "pattern": "notfound",
+          "target": "TargetNotFound"
+        },
+        {
+					"pattern": "notas-fiscais",
+					"name": "RouteNotasFiscais",
+					"target": "TargetNotasFiscais"
+				},
+        {
+					"pattern": "notas-fiscais/detail",
+					"name": "RouteNotasFiscaisDetail",
+					"target": "TargetNotasFiscais"
+				}
+        
       ],
       "targets": {
-        "TargetIndex": {
-          "id": "Index",
-          "name": "Index"
+        "TargetTemplate": {
+          "viewId": "template",
+					"viewName": "Template",
+					"level": 1
+        },
+        "TargetNotFound": {
+          "id": "notfound",
+					"path": "nexus.view",
+					"name": "NotFound",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetHome": {
+          "id": "home",
+					"path": "nexus.view",
+					"name": "Home",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetNotasFiscais": {
+          "id": "NotasFiscaisIndex",
+					"path": "nexus.view.NotasFiscais",
+					"name": "Index",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
+        },
+        "TargetNotasFiscaisDetail": {
+          "id": "NotasFiscaisDetail",
+					"path": "nexus.view.Users",
+					"name": "Detail",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
         }
       }
     },

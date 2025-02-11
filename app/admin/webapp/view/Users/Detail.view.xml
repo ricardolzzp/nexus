@@ -1,109 +1,92 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc"
-
-	controllerName="admin.controller.Users.Detail"
 	xmlns="sap.uxap"
+	xmlns:layout="sap.ui.layout"
 	xmlns:m="sap.m"
-	xmlns:core="sap.ui.core"
+	controllerName="admin.controller.Users.Detail"
 	height="100%">
-    <m:Page
-		id="AdminPageUserDetail"
-		showHeader="{device>/system/phone}"
-		showNavButton="{device>/system/phone}"
-		navButtonPress=".onNavButtonPress">
+	<m:Dialog id="changePasswordDialog" title="Alterar Senha">
+        <m:content>
+            <m:VBox class="dialogPadding">
+                <m:Label text="Nova Senha"/>
+                <m:Input id="newPassword" type="Password" placeholder="Digite a nova senha"/>
+            </m:VBox>
+        </m:content>
+        <m:buttons>
+            <m:Button text="Cancelar" press="onCloseDialog"/>
+            <m:Button text="Confirmar" type="Emphasized" press="onChangePassword"/>
+        </m:buttons>
+    </m:Dialog>
+	<ObjectPageLayout id="AdminObjectPageLayoutUersDetail"
+		enableLazyLoading="true"
+		useIconTabBar="true"
+		showTitleInHeaderContent="true"
+		selectedSection="personal"
+		upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Denise Smith" wrapping="true"/>
+				</expandedHeading>
 
-			<ObjectPageLayout id="AdminObjectPageLayoutUersDetail"
-				showTitleInHeaderContent="true"
-				upperCaseAnchorBar="false">
-				<headerTitle>
-					<ObjectPageDynamicHeaderTitle>
-						<expandedHeading>
-							<m:Title text="{i18n>userDetail}" wrapping="true" />
-						</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiTinyMarginEnd"/>
+						<m:Title text="Denise Smith" wrapping="true" />
+					</m:FlexBox>
+				</snappedHeading>
 
-						<snappedHeading>
-							<m:HBox>
-								<m:VBox>
-									<m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiSmallMarginEnd" />
-								</m:VBox>
-							</m:HBox>
-							<m:VBox>
-								<m:Title text="{modelData>/name}" wrapping="true"/>
-							</m:VBox>
-						</snappedHeading>
+				<expandedContent>
+					<m:Text text="Senior UI Developer"/>
+				</expandedContent>
 
-						<actions>
-							<m:Button id="AdminEditButtonUserDetail" press="onHandleEditPress" text="{i18n>edit}" type="Emphasized"/>
-							<m:Button id="AdminSaveButtonUserDetail" visible="false" press="onHandleSavePressed" text="{i18n>save}" type="Emphasized"/>
-							<m:Button id="AdminDeleteButtonUserDetail"  visible="false" text="{i18n>delete}"/>
-						</actions>
-					</ObjectPageDynamicHeaderTitle>
-				</headerTitle>
+				<snappedContent>
+					<m:Text text="Senior UI Developer"/>
+				</snappedContent>
 
-				<headerContent>
+				<snappedTitleOnMobile>
+					<m:Title text="Senior UI Developer"/>
+				</snappedTitleOnMobile>
 
-					<m:HeaderContainer id="headerContainer" scrollStep="200" showDividers="false">
-						<m:HBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
-							<m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiMediumMarginEnd" displaySize="L"/>
-							<m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
-								<m:HBox class="sapUiTinyMarginBottom">
-									<core:Icon src="sap-icon://account"/>
-									<m:Text text="{modelData>/name}" class="sapUiSmallMarginBegin"/>
-								</m:HBox>
+				<actions>
+					<m:Button text="Edit" type="Emphasized"/>
+					<m:Button type="Transparent" press="onOpenChangePasswordDialog" text="Alterar Senha"/>
+					<m:Button type="Transparent" text="Delete"/>
+					<m:OverflowToolbarButton icon="sap-icon://action" type="Transparent" text="Share" tooltip="action"/>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
 
-								<m:HBox class="sapUiTinyMarginBottom">
-									<core:Icon src="sap-icon://outgoing-call"/>
-									<m:Text text="{modelData>/telefone}" class="sapUiSmallMarginBegin"/>
-								</m:HBox>
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<m:Avatar class="sapUiSmallMarginEnd" src="./test-resources/sap/uxap/images/imageID_275314.png" displaySize="L" />
 
-								<m:HBox>
-									<core:Icon src="sap-icon://email"/>
-									<m:Text text="{modelData>/email}" class="sapUiSmallMarginBegin"/>
-								</m:HBox>
-							</m:VBox>
-						</m:HBox>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Link text="+33 6 4512 5158"/>
+					<m:Link text="DeniseSmith@sap.com"/>
+				</layout:VerticalLayout>
 
-						<m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
-							<m:HBox class="sapUiTinyMarginBottom">
-								<m:Label text="Created By:" class="sapUiSmallMarginEnd"/>
-								<m:Text text="{modelData>/createdBy}"/>
-							</m:HBox>
+				<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Image src="./test-resources/sap/uxap/images/linkedin.png"/>
+					<m:Image src="./test-resources/sap/uxap/images/Twitter.png" class="sapUiSmallMarginBegin"/>
+				</layout:HorizontalLayout>
 
-							<m:HBox class="sapUiTinyMarginBottom" renderType="Bare">
-								<m:Label text="Created On:" class="sapUiSmallMarginEnd"/>
-								<m:Text text="{path: 'modelData>/createdAt', formatter: '.formatter.formatDate'}"/>
-							</m:HBox>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label text="Hello! I am Denise and I use UxAP"/>
+					<m:VBox>
+						<m:Label text="Achieved goals"/>
+						<m:ProgressIndicator percentValue="30" displayValue="30%"/>
+					</m:VBox>
+				</layout:VerticalLayout>
 
-							<m:HBox class="sapUiTinyMarginBottom">
-								<m:Label text="Changed By:" class="sapUiSmallMarginEnd"/>
-								<m:Text text="{modelData>/modifiedBy}"/>
-							</m:HBox>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label text="San Jose, USA"/>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
 
-							<m:HBox renderType="Bare">
-								<m:Label text="Changed On:" class="sapUiSmallMarginEnd"/>
-								<m:Text text="{path: 'modelData>/modifiedAt', formatter: '.formatter.formatDate'}"/>
-							</m:HBox>
-						</m:VBox>
-
-					</m:HeaderContainer>
-
-				</headerContent>
-
-				<sections>
-					
-				</sections>
-			</ObjectPageLayout>
-			<m:footer>
-			<m:OverflowToolbar id="OverflowToolbarUserDetail">
-            	<m:Button
-					id="UserErrorButtonBadgeDetail"
-					icon="sap-icon://error"
-					text="{= ${message>/}.length }"
-					visible="{= ${message>/}.length > 0 }"
-					type="Emphasized"
-					press="onMessagePopoverPress" />
-            
-				<m:ToolbarSpacer id="ToolbarSpacerUserDetail"/>
-			</m:OverflowToolbar>
-		</m:footer>
-    	</m:Page>
+		<sections>
+			
+		</sections>
+	</ObjectPageLayout>
+	
 </mvc:View>

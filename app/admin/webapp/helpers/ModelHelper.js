@@ -5,20 +5,30 @@ sap.ui.define([
     "use strict";
 
     return {
-        get: function (oController, entity, aFilter) {
+        get: function (oController, entity, aFilter, name = 'modelData') {
             return new Promise((resolve, reject) => {
-  
                 oController.getView().getModel().read(entity, {
                     filters: aFilter,
                     success: function(oData) {
-                    
-                        oController.getView().setModel( new JSONModel(oData.results[0]), 'modelData')
-              
+                        oController.getView().setModel( new JSONModel(oData.results[0]), name)
                         resolve(oData);
-
                     }.bind(this),
                     error: function(err) {
-                        console.log(err)
+                       
+                    }
+                })
+            });
+        },
+
+        getOdata:  function (oController, entity, aFilter, name = 'modelData') {
+            return new Promise((resolve, reject) => {
+                oController.getView().getModel().read(entity, {
+                    filters: aFilter,
+                    success: function(oData) {
+                        resolve(oData);
+                    }.bind(this),
+                    error: function(err) {
+                       
                     }
                 })
             });
@@ -28,12 +38,10 @@ sap.ui.define([
             return new Promise((resolve, reject) => {
                 oModel.update(entity, oData, {
                     success: function (data) {
-             
-                        MessageToast.show('Recurso Salvo');
                         resolve(true);
                     },
                     error: function (oError) {
-                        MessageToast.show('Ocorreu um Erro');
+                        // MessageToast.show('Ocorreu um Erro');
                         Messaging.removeAllMessages();
 
                         const messages = JSON.parse(oError.responseText);
@@ -71,11 +79,11 @@ sap.ui.define([
             return new Promise((resolve, reject) => {
                 oModel.create(entity, oData, {
                     success: function (data) {
-                        MessageToast.show('Recurso Salvo');
+                        // MessageToast.show('Recurso Salvo');
                         resolve(true); // Retorna true em caso de sucesso
                     },
                     error: function (oError) {
-                        MessageToast.show('Ocorreu um Erro');
+                        // MessageToast.show('Ocorreu um Erro');
                         Messaging.removeAllMessages();
     
                         const messages = JSON.parse(oError.responseText);

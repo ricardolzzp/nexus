@@ -1,0 +1,39 @@
+<mvc:View
+    controllerName="nexus.controller.NotasFiscais.Index"
+    xmlns="sap.m"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:mvc="sap.ui.core.mvc">
+
+    <Page id="UsersPage" showHeader="true" title="{i18n>manageUsers}">
+
+    	<headerContent>
+		</headerContent>
+
+        <VBox id="UserVbox" fitContainer="true">
+
+            <smartTable:SmartTable id="UserLineItemsSmartTable" entitySet="nexDistDfe" smartFilterId="UserSmartFilterBar"
+                tableType="ResponsiveTable" initiallyVisibleFields="file, status, tenant_id" useVariantManagement="false"
+                useTablePersonalisation="true" header="{i18n>usersList}" showRowCount="true"
+                ignoredFields="password" ignoreFromPersonalisation="password"
+                persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" class="sapUiResponsiveContentPadding"
+                editTogglable="false" enableExport='false' enableCopy="false" app:useSmartToggle="true">
+
+                <smartTable:layoutData>
+                    <FlexItemData id="UserFlexItemData" growFactor="1" baseSize="0%"/>
+                </smartTable:layoutData>
+
+                <Table id="UserTableBusinessPartner">
+                    <items>
+                        <ColumnListItem id="ColumnListItemUser" type="Navigation" press="_onItemPress">
+                            <cells />
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable>
+        </VBox>
+    
+    </Page>
+</mvc:View>

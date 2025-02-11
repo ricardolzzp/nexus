@@ -1,0 +1,18 @@
+<mvc:View
+	xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+    controllerName="nexus.controller.NotFound">
+
+    <Page title="Página Não Encontrada" showHeader="false">
+        <content>
+            <VBox class="notFoundContainer" justifyContent="Center" alignItems="Center">
+                <Title text="Página Não Encontrada" level="H2" />
+                <Text text="A página que você procura não existe ou foi removida." />
+                <Button text="Voltar" press="onNavBack" type="Emphasized" />
+            </VBox>
+        </content>
+    </Page>
+    
+</mvc:View>

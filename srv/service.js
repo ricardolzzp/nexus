@@ -1,7 +1,8 @@
 const cds = require('@sap/cds');
 
-// const { onCreateTenantUsers } = require("./functions/onCreateTenantUsers")
+const { postNotaFiscal } = require("./functions/postNotaFiscal")
 
 module.exports = cds.service.impl(function () {
 
+    this.on('postNotaFiscal', postNotaFiscal)
 });

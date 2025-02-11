@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="admin.controller.Users.Create"
+	controllerName="admin.controller.Clientes.Create"
 	xmlns="sap.uxap"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:m="sap.m"
@@ -10,30 +10,26 @@
 	xmlns:mvc="sap.ui.core.mvc">
 
     <m:Page
-		id="AdminPageUser"
+		id="AdminPageClientes"
 		showHeader="{device>/system/phone}"
 		showNavButton="{device>/system/phone}"
 		navButtonPress=".onNavButtonPress">
-		
-		<ObjectPageLayout id="AdminObjectPageLayoutUers"
-		enableLazyLoading="true"
-		useIconTabBar="true"
-		selectedSection="personal"
-		upperCaseAnchorBar="false">
+
+		<ObjectPageLayout id="AdminObjectPageLayoutClientes">
 			<headerTitle>
 				<ObjectPageHeader
-					id="AdminObjectPageHeaderTenant"
+					id="AdminObjectPageHeaderClientes"
 					objectTitle="{i18n>newUser}"
 					objectSubtitle="{i18n>usersCreateSubtitle}">
 					<actions>
 						<ObjectPageHeaderActionButton
-							id="UserButtonSave"
+							id="ClientesButtonSave"
 							text="{i18n>save}"
 							hideText="false"
 							press=".onSavePressed"
 							type="Emphasized"/>
 						<ObjectPageHeaderActionButton
-							id="UserButtonCancel"
+							id="ClientesButtonCancel"
 							text="{i18n>cancel}"
 							press=".onPressBackButton"
 							hideText="false"/>
@@ -42,43 +38,26 @@
 			</headerTitle>
 			<headerContent>
 				<m:MessageStrip
-					id="UserMessageStrip"
+					id="ClientesMessageStrip"
 					visible="{= ${message>/}.length > 0 }"
 					text="{i18n>systemErrorCreateUser}"
 					type="Error"
 					showIcon="true">
 				</m:MessageStrip>
 			</headerContent>
-			<sections>
-			<ObjectPageSection titleUppercase="false" id="goals" title="2014 Goals Plan">
-			<subSections>
-				<ObjectPageSubSection id="goalsSS1" titleUppercase="false">
-					<f:SimpleForm labelSpanL="4" labelSpanM="4"
-									labelSpanS="4" emptySpanL="0" emptySpanM="0" emptySpanS="0"
-									maxContainerCols="2" editable="false"
-									layout="ResponsiveGridLayout"
-									width="100%">
-						<m:Label text="Start Date"/>
-						<m:Text text="Jan 01, 2001"/>
-
-					</f:SimpleForm>
-
-				</ObjectPageSubSection>
-			</subSections>
-			</ObjectPageSection>
-			</sections>
+			<sections/>
 		</ObjectPageLayout>
 		<m:footer>
-			<m:OverflowToolbar id="OverflowToolbarUser">
+			<m:OverflowToolbar id="OverflowToolbarClientes">
             	<m:Button
-					id="UserErrorButtonBadge"
+					id="ClientesErrorButtonBadge"
 					icon="sap-icon://error"
 					text="{= ${message>/}.length }"
 					visible="{= ${message>/}.length > 0 }"
 					type="Emphasized"
 					press="onMessagePopoverPress" />
             
-				<m:ToolbarSpacer id="ToolbarSpacerUser"/>
+				<m:ToolbarSpacer id="ToolbarSpacerClientes"/>
 			</m:OverflowToolbar>
 		</m:footer>
 	</m:Page>

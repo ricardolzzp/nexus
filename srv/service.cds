@@ -8,5 +8,9 @@ service Admin {
 }
 
 service Nexus {
+    @readonly
+    function postNotaFiscal() returns String;
+
     entity TenantUsers as projection on db.TenantUsers;
+    entity nexDistDfe as projection on db.nexDistDfe;
 }

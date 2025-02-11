@@ -9,6 +9,7 @@
     "@cap-js-community/odata-v2-adapter": "^1.13.7",
     "@cap-js/postgres": "^1.11.0",
     "@sap/cds": "^8",
+    "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
     "cds-pg": "^0.1.36",
     "cors": "^2.8.5",

@@ -39,17 +39,38 @@ sap.ui.define(["../BaseController",
             
 			var sId = oEvent.getParameter("arguments").id;
 			aFilter.push( new Filter('ID', FilterOperator.EQ, sId) )
-			await ModelHelper.get(this, constants.entity, aFilter)
+			const data = await ModelHelper.get(this, constants.entity, aFilter)
+
+            if (!!data.results) {
+                this.getOwnerComponent().getRouter().navTo('RouteNotFound');
+            }
          
             this.data = this.getView().getModel("modelData").getData()
             const result = Object.entries(this.data).map(([key, value]) => ({ key, value }));
-            
 
-            FormModel = FormUser.formCreateModel(this)
+            FormModel = FormUser.formEditModel(this)
 
             var oForm = this.byId(constants.form);
             BuildFormHelper.build(oForm, FormModel, result)
             BuildFormHelper.toggle(oForm, false)
+        },
+
+        onOpenChangePasswordDialog: function () {
+            this.byId("changePasswordDialog").open();
+        },
+
+        onCloseDialog: function () {
+            this.byId("changePasswordDialog").close();
+        },
+
+        onChangePassword: function () {
+            var newPassword = this.byId("newPassword").getValue();
+
+            if (!newPassword) {
+                return;
+            }
+
+            this.onCloseDialog();
         },
 
         onHandleEditPress: function() {

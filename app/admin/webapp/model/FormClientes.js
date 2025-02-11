@@ -14,6 +14,7 @@ sap.ui.define([
                             formTitle: "",
                             fields: [
                                 { label: "Nome", id: "name", type: "Input", required: true, enable: true },
+                                { label: "Razão Social", id: "razaoSocial", type: "Input", required: true, enable: true },
                                 { label: "Ativo?", id: "status", type: "Checkbox", enable: true },
                             ]
                         },

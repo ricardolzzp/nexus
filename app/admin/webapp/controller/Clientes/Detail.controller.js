@@ -40,16 +40,26 @@ sap.ui.define(["../BaseController",
 			var sId = oEvent.getParameter("arguments").id;
 			aFilter.push( new Filter('ID', FilterOperator.EQ, sId) )
 			await ModelHelper.get(this, constants.entity, aFilter)
-         
+            const oData = await ModelHelper.getOdata(this, `/Tenants('${sId}')?$expand=users`, [])
+
+            this.getView().setModel( new JSONModel(oData.users), 'TenantUsers')
+
             this.data = this.getView().getModel("modelData").getData()
-            const result = Object.entries(this.data).map(([key, value]) => ({ key, value }));
-            
 
-            FormModel = FormUser.formCreateModel(this)
+        },
 
-            var oForm = this.byId(constants.form);
-            BuildFormHelper.build(oForm, FormModel, result)
-            BuildFormHelper.toggle(oForm, false)
+        onOpenAddUserDialog: function () {
+            this.byId("addUserTenantScreen").open();
+        },
+
+        onCloseDialog: function () {
+            this.byId("addUserTenantScreen").close();
+        },
+
+        onChangePassword: function () {
+           
+
+            this.onCloseDialog();
         },
 
         onHandleEditPress: function() {

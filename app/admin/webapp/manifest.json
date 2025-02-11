@@ -97,6 +97,11 @@
           "target": "TargetHome"
         },
         {
+          "name": "RouteNotFound",
+          "pattern": "notfound",
+          "target": "TargetNotFound"
+        },
+        {
 					"pattern": "users",
 					"name": "RouteUsers",
 					"target": "TargetUsers"
@@ -147,6 +152,15 @@
           "viewId": "template",
 					"viewName": "Template",
 					"level": 1
+        },
+        "TargetNotFound": {
+          "id": "notfound",
+					"path": "admin.view",
+					"name": "NotFound",
+					"transition": "slide",
+					"parent": "TargetTemplate",
+					"controlId": "parentNavContainer",
+					"level": 2
         },
         "TargetHome": {
           "id": "home",
