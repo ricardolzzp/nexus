@@ -51,9 +51,19 @@ def upload_xml():
         file.write(xml_data)
     
     # Salva no banco de dados
-    new_record = NexdistDfe(file=filepath, status="PENDING", tenant_id=tenant_id)
-    db.session.add(new_record)
-    db.session.commit()
+    # new_record = NexdistDfe(file=filepath, status="PENDING", tenant_id=tenant_id)
+    # db.session.add(new_record)
+    # db.session.commit()
+
+    try:
+        new_record = NexdistDfe(file=filepath, status="PENDING", tenant_id=tenant_id)
+        db.session.add(new_record)
+        db.session.commit()
+        print("Registro salvo com sucesso!")
+    except Exception as e:
+        db.session.rollback()  # Reverte alterações em caso de erro
+        print(f"Erro ao salvar no banco: {e}")
+
     
     return Response(json.dumps({"message": f"XML saved as {filename} and recorded in database"}), status=200, mimetype='application/json')
 
